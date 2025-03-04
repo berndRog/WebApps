@@ -1,0 +1,10 @@
+@page "/people/{id:guid}"
+
+<h3>Person bearbeiten</h3>
+
+@if (!string.IsNullOrEmpty(_errorMessage)) {
+  <div class="alert alert-danger">@_errorMessage</div>
+}
+
+<PersonForm Person="@_person"
+            OnValidSubmit="@HandleValidSubmit" />

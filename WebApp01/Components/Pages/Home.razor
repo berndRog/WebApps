@@ -1,0 +1,8 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+@code {
+    protected override void OnInitialized() =>
+      // Redirect to the index page, http status code 302
+      NavigationManager.NavigateTo("/index.html");
+}

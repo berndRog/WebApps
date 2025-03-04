@@ -1,0 +1,9 @@
+@page "/people/create"
+
+<h3>Person hinzufügen</h3>
+
+@if (!string.IsNullOrEmpty(_errorMessage)) {
+  <div class="alert alert-danger">@_errorMessage</div>
+}
+
+<PersonForm Person="@_person" OnValidSubmit="HandleValidSubmit" />

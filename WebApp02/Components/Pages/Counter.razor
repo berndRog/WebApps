@@ -1,0 +1,19 @@
+@page "/counter"
+@inject NavigationManager NavigationManager
+
+<h3>Counter</h3>
+
+<div>
+  <h1>Aktueller Wert: @counter</h1>
+  <button class="btn btn-primary" 
+        @onclick="IncrementCounter">Inkrementieren</button>
+</div>
+
+<p><a href="/">Hier geht es zurück zur Startseite</a></p>
+
+@code {
+  private int counter = 0;
+
+  private void IncrementCounter() =>
+    counter++;
+}

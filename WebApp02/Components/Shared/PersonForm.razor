@@ -1,0 +1,26 @@
+
+<EditForm Model="@Person" OnValidSubmit="HandleSubmit">
+  <DataAnnotationsValidator />
+  <ValidationSummary />
+  <div>
+    <label for="firstName">Vorname:</label>
+    <InputText id="firstName" @bind-Value="FirstName" />
+    <ValidationMessage For="@(() => FirstName)" />
+  </div>
+  <div>
+    <label for="lastName">Nachname:</label>
+    <InputText id="lastName" @bind-Value="LastName" />
+    <ValidationMessage For="@(() => LastName)" />
+  </div>
+  <div>
+    <label for="email">E-Mail:</label>
+    <InputText id="email" @bind-Value="Email" />
+    <ValidationMessage For="@(() => Email)" />
+  </div>
+  <div>
+    <label for="phone">Telefon:</label>
+    <InputText id="phone" @bind-Value="Phone" />
+    <ValidationMessage For="@(() => Phone)" />
+  </div>
+  <button type="submit">Submit</button>
+</EditForm>

@@ -1,0 +1,35 @@
+@page "/people"
+
+<h3>Liste der Personen</h3>
+
+@if (_people == null) {
+  <p>Loading...</p>
+}
+else if (!_people.Any()) {
+  <p>No people found.</p>
+}
+else {
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Vorname</th>
+      <th>Nachname</th>
+      <th>E-Mail</th>
+      <th>Telefon</th>
+      <th>Id</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var person in _people) {
+      <tr>
+        <td>@person.FirstName</td>
+        <td>@person.LastName</td>
+        <td>@person.Email</td>
+        <td>@person.Phone</td>
+        <td>@person.Id</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+}
+

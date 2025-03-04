@@ -1,0 +1,15 @@
+@page "/stopwatch"
+
+<h3>Stoppuhr</h3>
+
+<h1>@_formattedTime</h1>
+
+<button class="btn btn-success" 
+        @onclick="StartStopwatch" 
+        disabled="@_isRunning">Start</button>
+<button class="btn btn-danger" 
+        @onclick="StopStopwatch" 
+        disabled="@(_isRunning == false)">Stopp</button>
+<button class="btn btn-secondary" 
+        @onclick="ResetStopwatch">Zurücksetzen</button>
+

@@ -1,0 +1,23 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<h1>Statische und Dynamische Webseiten</h1>
+
+<h3>Statische Webseiten</h3>
+<p><a href="/index.html">Hier geht es zur statischen Startseite</a></p>
+<p><a href="/page1.html">Hier geht es zur Websseite 1</a></p>
+<p><a href="/page2.html">Hier geht es zur Websseite 2</a></p>
+
+<h3>Dynamische Webseiten</h3>
+<p><a href="/counter">Hier geht es zur dynamischen Webseite /counter</a></p>
+<p><a href="/stopwatch">Hier geht es zur dynamischen Webseite /stopwatch</a></p>
+
+<p><a href="/people">Hier geht es zur dynamischen Webseite /people</a></p>
+<p><a href="/people/create">Hier geht es zur dynamischen Webseite /people/create</a></p>
+
+
+@code {
+  // protected override void OnInitialized() =>
+  //   // Redirect to the index page
+  //   NavigationManager.NavigateTo("/index.html");
+}
