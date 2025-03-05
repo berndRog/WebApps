@@ -5,7 +5,7 @@ using WebApp.Core.DomainModel.Entities;
 namespace WebApp.Components.Pages;
 
 public partial class PersonCreate(
-   IPersonRepository personRepository, 
+   IPeopleRepository peopleRepository, 
    IDataContext dataContext,
    NavigationManager navigation
 ) : ComponentBase {
@@ -15,7 +15,7 @@ public partial class PersonCreate(
    
    private void HandleValidSubmit(EventArgs e) {
       try {
-         personRepository.Add(_person);
+         peopleRepository.Add(_person);
          dataContext.SaveAllChanges();
          navigation.NavigateTo("/people");
       }

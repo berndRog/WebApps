@@ -6,12 +6,12 @@ namespace WebApp.Components.Pages;
 
 public partial class PeopleList(
    // ctor injection
-   IPersonRepository personRepository
+   IPeopleRepository peopleRepository
 ) : ComponentBase {
    
    private List<Person> _people;
 
    protected override void OnInitialized() {
-      _people = personRepository.SelectAll().ToList();
+      _people = peopleRepository.SelectAll().ToList();
    }
 }

@@ -18,7 +18,7 @@ public class Program {
       builder.Services.AddRazorComponents()
          .AddInteractiveServerComponents();
 
-      builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+      builder.Services.AddScoped<IPeopleRepository, PeopleRepository>();
       builder.Services.AddScoped<IDataContext,DataContext>();
       
       var app = builder.Build();

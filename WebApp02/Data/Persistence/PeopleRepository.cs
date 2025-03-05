@@ -2,9 +2,9 @@ using WebApp.Core;
 using WebApp.Core.DomainModel.Entities;
 namespace WebApp.Data;
 
-public class PersonRepository(
+public class PeopleRepository(
    IDataContext dataContext   
-): IPersonRepository {
+): IPeopleRepository {
    
    public Person? FindById(Guid id) =>
       dataContext.People.FirstOrDefault(person => 
