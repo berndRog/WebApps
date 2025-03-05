@@ -33,7 +33,7 @@ public class DataContext: IDataContext {
    }
 
   
-   public void SaveChanges() {
+   public void SaveAllChanges() {
       try {
          var json = JsonSerializer.Serialize(People);
          File.WriteAllText(_filePath, json);

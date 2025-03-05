@@ -16,7 +16,7 @@ public partial class PersonCreate(
    private void HandleValidSubmit(EventArgs e) {
       try {
          personRepository.Add(_person);
-         dataContext.SaveChanges();
+         dataContext.SaveAllChanges();
          navigation.NavigateTo("/people");
       }
       catch (Exception ex) {

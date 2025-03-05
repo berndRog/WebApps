@@ -24,7 +24,7 @@ public partial class PersonDetail(
       try {
          // Save the book to the repository
          personRepository.Update(_person);
-         dataContext.SaveChanges();
+         dataContext.SaveAllChanges();
       } catch (Exception ex) {
          // Handle the exception
          _errorMessage = $"Fehler: {ex.Message}";
