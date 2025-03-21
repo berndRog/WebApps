@@ -6,7 +6,7 @@ namespace WebApi01.Data;
 public class DataContext: IDataContext {
    // fake storage with JSON file
    private readonly string _filePath;
-   
+   private ILogger<DataContext> _logger;
    private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions {
       PropertyNameCaseInsensitive = true,
       WriteIndented = true
@@ -17,6 +17,7 @@ public class DataContext: IDataContext {
    public DataContext(
       ILogger<DataContext> logger
    ) {
+      _logger = logger;
       try {
          // Create the directory if it does not exist /Users/rogallab/Webtech/WebApps/WebApp02
          string homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
@@ -24,11 +25,12 @@ public class DataContext: IDataContext {
          if (!Directory.Exists(directory)) Directory.CreateDirectory(directory);
          // Create file path
          _filePath = Path.Combine(directory, "people.json");
-         logger.LogInformation("File path: {_filePath}", _filePath);
+         _logger.LogInformation("File path: {_filePath}", _filePath);
          if (!File.Exists(_filePath)) 
             File.WriteAllText(_filePath, "[]");
          // Read JSON file and deserialize it
          var json = File.ReadAllText(_filePath);
+         _logger.LogInformation("Deserialize: {json}", json);
          People = JsonSerializer.Deserialize<List<Person>>(json, _jsonOptions) ?? new List<Person>();
       }
       catch (Exception e) {
@@ -41,6 +43,7 @@ public class DataContext: IDataContext {
    public void SaveAllChanges() {
       try {
          var json = JsonSerializer.Serialize(People, _jsonOptions);
+         _logger.LogInformation("Serialize: {json}", json);
          File.WriteAllText(_filePath, json);
       }
       catch (Exception e) {
