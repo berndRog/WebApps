@@ -7,6 +7,11 @@ public class DataContext: IDataContext {
    // fake storage with JSON file
    private readonly string _filePath;
    
+   private readonly JsonSerializerOptions _jsonOptions = new JsonSerializerOptions {
+      PropertyNameCaseInsensitive = true,
+      WriteIndented = true
+   };
+   
    public ICollection<Person> People { get; } = [];
 
    public DataContext(
@@ -24,7 +29,7 @@ public class DataContext: IDataContext {
             File.WriteAllText(_filePath, "[]");
          // Read JSON file and deserialize it
          var json = File.ReadAllText(_filePath);
-         People = JsonSerializer.Deserialize<List<Person>>(json) ?? new List<Person>();
+         People = JsonSerializer.Deserialize<List<Person>>(json, _jsonOptions) ?? new List<Person>();
       }
       catch (Exception e) {
          Console.WriteLine(e.Message);
@@ -35,7 +40,7 @@ public class DataContext: IDataContext {
   
    public void SaveAllChanges() {
       try {
-         var json = JsonSerializer.Serialize(People);
+         var json = JsonSerializer.Serialize(People, _jsonOptions);
          File.WriteAllText(_filePath, json);
       }
       catch (Exception e) {

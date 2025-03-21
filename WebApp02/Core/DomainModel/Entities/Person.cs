@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using WebApi.Core.DomainModel.Entities;
 namespace WebApp.Core.DomainModel.Entities;
 
@@ -5,9 +6,13 @@ public class Person: AEntity {
    
    // properties
    public override Guid Id { get; init;  } = Guid.NewGuid();
+   [JsonInclude]
    public string FirstName { get; private set; } = string.Empty;
+   [JsonInclude]
    public string LastName  { get; private set; } = string.Empty;
+   [JsonInclude]
    public string? Email { get; private set; } = null;
+   [JsonInclude]
    public string? Phone { get; private set; } = null;
    
    // ctor

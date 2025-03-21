@@ -1,5 +1,9 @@
 @page "/people"
 
+@if (!string.IsNullOrEmpty(_errorMessage)) {
+  <div class="alert alert-danger">@_errorMessage</div>
+}
+
 <h3>Liste der Personen</h3>
 
 @if (_people == null) {

@@ -10,8 +10,15 @@ public partial class PeopleList(
 ) : ComponentBase {
    
    private List<Person> _people;
+   private string? _errorMessage;
 
    protected override void OnInitialized() {
-      _people = peopleRepository.SelectAll().ToList();
+      _errorMessage = null;
+      try {
+         _people = peopleRepository.SelectAll().ToList();
+      }
+      catch (Exception ex) {
+         _errorMessage = $"Fehler: {ex.Message}";
+      }
    }
 }
